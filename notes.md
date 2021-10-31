@@ -3,10 +3,12 @@ User
     has_many :barbers, through: :appointments
     has_many :favorite_barbers   
     has_many :favorite_barbers, through: :favorite_barbers
+    has_secure_password
 
-    :username
+    :first_name
+    :last_name
     :email
-    :password
+    :password_digest
     :uid
     :provider
 
@@ -20,7 +22,10 @@ Barber
 Appointment
     belongs_to :user
     belongs_to :barber
+    has_many :services, through: :services_appointments
 
+    :start_time
+    :duration
     :user_id
     :barber_id
 
@@ -30,5 +35,18 @@ Favorite_Barber
 
     :user_id
     :barber_id
+
+Service
+    has_many :appointments, through: :services_appointments
+
+    :name
+    :cost
+
+Services_Appointments
+    belongs_to :service
+    belongs_to :appointment
+
+    :service_id
+    :appointment_id 
 
 
