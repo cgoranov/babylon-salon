@@ -42,11 +42,18 @@ Service
     :name
     :cost
 
+    Haircut $15
+    Beard $15
+    Haircut and Beard $25
+    hair dye $25
+
 Services_Appointments
     belongs_to :service
     belongs_to :appointment
 
     :service_id
     :appointment_id 
+
+
 
 
