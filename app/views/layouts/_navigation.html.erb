@@ -1,15 +1,14 @@
 <div class="sidenav">
-  <%= link_to "Home" %>
-  <%= link_to "Services" %>
-  <%= link_to "The Crew" %>
-  
-  <% if logged_in? %>
-  <%= link_to "Profile" %>
-  <%= link_to "Your Crew" %>
-  <%= link_to "Appointments" %>
-  <%= link_to "Logout" %>
-  <% else %>
-  <%= link_to "Login" %>
+<% if logged_in? %>
+    <%= link_to "Profile" %>
+    <%= link_to "Your Crew" %>
+    <%= link_to "Appointments" %>
+    <%= button_to "Logout", logout_path %>
+<% else %>
+    <%= link_to "Home" %>
+    <%= link_to "The Cuts" %>
+    <%= link_to "The Crew" %>
+    <%= link_to "Login" %>
+    <%= link_to "Sign up" %>
   <% end %>
-
 </div>
