@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
 
         if user.valid?
             session[:user_id] = user.id
-            redirect_to user_path(user), notice: "Successful login!"
+            redirect_to root_path, notice: "Successful login!"
         else
             redirect_to root_path
         end
