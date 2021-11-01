@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+    validates :first_name, presence: true
+    validates :last_name, presence: true
+    validates :email, presence: true, uniqueness: true
     has_secure_password  #.authenticate, .password=, validates
 
     def self.from_omni_auth(omni_response) #the block only gets activated on create
