@@ -3,6 +3,9 @@ class User < ApplicationRecord
     validates :last_name, presence: true
     validates :email, presence: true, uniqueness: true
     validate :email_format
+    validates :password, length: { within: 6..15 }
+    validate :password_uppercase?
+    validate :special_character
     has_secure_password  #.authenticate, .password=, validates
 
     def self.from_omni_auth(omni_response) #the block only gets activated on create
@@ -19,5 +22,19 @@ class User < ApplicationRecord
           self.errors.add(:email, "must be valid")
       end
     end
+
+    def password_uppercase?
+      errors.add(:password, ' must contain at least 1 uppercase ') if !!self.password =~ (/\p{Upper}/)
+    end
+
+    def special_character
+      special = "?<>',?[]}{=-)(*&^%$#`~{}!"
+      regex = /[#{special.gsub(/./){|char| "\\#{char}"}}]/
+      unless self.password =~ regex
+          self.errors.add(:password, "must contain special character")
+      end
+    end
+
+
 
 end
