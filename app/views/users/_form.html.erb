@@ -1,3 +1,5 @@
+<%= render partial: 'layouts/errors_msgs', locals: { object: @user }  %>
+
 <div class="signup">
     
     <%= form_for(@user, url: signup_path) do |f| %>

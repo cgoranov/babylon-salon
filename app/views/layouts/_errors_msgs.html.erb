@@ -1,5 +1,16 @@
-<div class="errors_msgs">
+<div class="flash_msgs">
     <% flash.each do | type, msg |  %>
         <%= msg %>
     <% end %>
 </div>
+
+<% if object.errors.any? %>
+  <div id="error_explanation">
+    <h3>There were some errors:</h3>
+    <ul>
+      <% object.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

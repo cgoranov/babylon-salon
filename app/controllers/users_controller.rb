@@ -11,8 +11,7 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id
             redirect_to user_path(@user)
         else
-            byebug
-            redirect_to signup_path
+            render :new
         end
     end
 
