@@ -1,11 +1,12 @@
 class User < ApplicationRecord
     validates :first_name, presence: true
     validates :last_name, presence: true
-    validates :email, presence: true, uniqueness: true
-    validate :email_format
-    validates :password, length: { within: 6..15 }
-    validate :password_uppercase?
-    validate :special_character
+    validates :email, presence: true
+    validates :email, uniqueness: true, on: :create
+    validate :email_format, on: :create
+    validates :password, length: { within: 6..27 }, on: :create
+    validate :password_uppercase?, on: :create
+    validate :special_character, on: :create
     has_secure_password  #.authenticate, .password=, validates
 
     def self.from_omni_auth(omni_response) #the block only gets activated on create
@@ -13,7 +14,7 @@ class User < ApplicationRecord
           u.first_name = omni_response['info']['first_name']
           u.last_name = omni_response['info']['last_name']
           u.email = omni_response['info']['email']
-          u.password = SecureRandom.hex(15) # still need this information, despite google handling login, random sequence that even we do not know for security
+          u.password = SecureRandom.hex(12) + "C!" # still need this information, despite google handling login, random sequence that even we do not know for security
         end 
     end
 
@@ -34,7 +35,5 @@ class User < ApplicationRecord
           self.errors.add(:password, "must contain special character")
       end
     end
-
-
 
 end

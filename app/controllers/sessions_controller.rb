@@ -7,13 +7,14 @@ class SessionsController < ApplicationController
     end
 
     def omniauth 
+    
         user = User.from_omni_auth(omni_response)
-
+        
         if user.valid?
             session[:user_id] = user.id
-            redirect_to root_path, notice: "Successful login!"
+            redirect_to user_path(user), notice: "welcome #{user.first_name.upcase}!"
         else
-            redirect_to root_path
+            redirect_to login_path
         end
     end
 
