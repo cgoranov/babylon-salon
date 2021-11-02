@@ -17,8 +17,18 @@ class UsersController < ApplicationController
         end
     end
 
+    def edit
+        @user = User.find_by_id(params[:id])
+    end
+
+    def update
+    end
+
+
+
     def show
-        @user = User.find_by(params[:id])
+        @user = User.find_by_id(params[:id])
+        redirect_to user_path(current_user), notice: "Not your profile!" if current_user.id != @user.id
     end
 
     private
