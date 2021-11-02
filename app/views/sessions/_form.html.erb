@@ -1,10 +1,10 @@
 
-<%= form_for(:user, url: login_path) do |f| %>
-    <%= f.label :email %>
-    <%= f.text_field :email %><br>
-    <%= f.label :password %>
-    <%= f.password_field :password %><br>
-    <%= f.submit "Sign in" %>
+<%= form_tag login_path %>
+    <%= label_tag :email %>
+    <%= text_field_tag :email %><br>
+    <%= label_tag :password %>
+    <%= password_field_tag :password %><br>
+    <%= submit_tag "Sign in" %>
 <% end %>
 
     ------- or ---------

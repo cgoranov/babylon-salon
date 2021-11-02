@@ -4,9 +4,12 @@ class SessionsController < ApplicationController
     end
 
     def create
-        user = find_by(email: params[:user][:email])
+        user = User.find_by(email: params[:user][:email].downcase).try(:authenticate, [:user][:password])
+        
+        if
+        end
 
-
+        # if !!user && user.password.authenticate
     end
 
     def omniauth 
