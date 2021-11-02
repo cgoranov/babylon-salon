@@ -13,28 +13,46 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id
             redirect_to user_path(@user), notice: "welcome #{@user.first_name.capitalize}"
         else
-            redirect_to :new
+            render :new
         end
     end
 
     def edit
         @user = User.find_by_id(params[:id])
+        
+        if !!@user.uid
+           redirect_to user_path(@user), notice: "Google account, cannot update here" 
+        elsif valid_user?
+            redirect_to user_path(current_user), notice: "Not your account, cannot edit"
+        end 
     end
 
     def update
+        @user = User.find_by_id(params[:id])
+
+        @user.update(user_params)
+
+        if @user.valid?
+            redirect_to user_path(@user), notice: "Profile successfully updated"
+        else
+            render :edit
+        end
+
     end
-
-
 
     def show
         @user = User.find_by_id(params[:id])
-        redirect_to user_path(current_user), notice: "Not your profile!" if current_user.id != @user.id
+        redirect_to user_path(current_user), notice: "Not your profile!" if valid_user?
     end
 
     private
 
     def user_params
         params.require(:user).permit(:first_name, :last_name, :email, :password)
+    end
+
+    def valid_user?
+        current_user != @user
     end
 
 end

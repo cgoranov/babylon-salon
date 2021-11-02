@@ -2,4 +2,4 @@
 <%= content_tag(:p, @user.full_name) %>
 <%= content_tag(:p, @user.email) %>
 
-<%= link_to "Edit Profile", edit_user_path(@user) %>
+<%= link_to "Edit Profile", edit_user_path(@user) unless !!@user.uid %>

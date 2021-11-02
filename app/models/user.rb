@@ -8,6 +8,7 @@ class User < ApplicationRecord
     validate :password_uppercase?, on: :create
     validate :special_character, on: :create
     before_save :downcase
+    before_update :downcase
     has_secure_password  #.authenticate, .password=, validates
 
     def self.from_omni_auth(omni_response) #the block only gets activated on create

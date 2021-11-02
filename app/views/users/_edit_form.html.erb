@@ -1,3 +1,5 @@
+<%= render partial: 'layouts/errors', locals: { object: @user }  %>
+
 <%= form_for object do |f| %>
     <%= f.label :first_name %>
     <%= f.text_field :first_name %><br>
@@ -5,5 +7,7 @@
     <%= f.text_field :last_name %><br>
     <%= f.label :email %>
     <%= f.text_field :email %><br>
+    <%= f.label "New password" %>
+    <%= f.password_field :password %><br>
     <%= f.submit "Update Profile" %>
 <% end %>
