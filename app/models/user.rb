@@ -19,21 +19,17 @@ class User < ApplicationRecord
     end
 
     def email_format
-      unless self.email =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
-          self.errors.add(:email, "must be valid")
-      end
+      self.errors.add(:email, 'must be valid') if !!self.email =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i 
     end
 
     def password_uppercase?
-      errors.add(:password, ' must contain at least 1 uppercase ') if !!self.password =~ (/\p{Upper}/)
+      errors.add(:password, 'must contain at least 1 uppercase ') if !!self.password =~ (/\p{Upper}/)
     end
 
     def special_character
       special = "?<>',?[]}{=-)(*&^%$#`~{}!"
       regex = /[#{special.gsub(/./){|char| "\\#{char}"}}]/
-      unless self.password =~ regex
-          self.errors.add(:password, "must contain special character")
-      end
+      self.errors.add(:password, "must contain special character") if !!self.password =~ regex
     end
 
 end
