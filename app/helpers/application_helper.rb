@@ -8,4 +8,12 @@ module ApplicationHelper
         !!current_user
     end
 
+    def redirect_if_not_logged_in
+        redirect_to login_path, notice: "Must be logged in!" if !logged_in?
+    end
+
+    def redirect_if_logged_in
+        redirect_to user_path(current_user.id), notice: "Already logged in!" if logged_in?
+    end
+
 end

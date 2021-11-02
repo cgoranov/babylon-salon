@@ -19,6 +19,10 @@ class User < ApplicationRecord
         end 
     end
 
+    def full_name
+      self.first_name.capitalize + " " + self.last_name.capitalize
+    end
+
     def email_format
       self.errors.add(:email, 'must be valid') if !!self.email =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i 
     end
