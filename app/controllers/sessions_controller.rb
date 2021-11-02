@@ -4,12 +4,14 @@ class SessionsController < ApplicationController
     end
 
     def create
-        user = User.find_by(email: params[:user][:email].downcase).try(:authenticate, [:user][:password])
+        user = User.find_by(email: params[:email].downcase).try(:authenticate, params[:password])
         
-        if
+        if !!user
+            session[:user_id] = user.id
+            redirect_to user_path(user), notice: "welcome, #{user.first_name.capitalize}"
+        else
+            redirect_to login_path, notice: "Incorrect email or password"
         end
-
-        # if !!user && user.password.authenticate
     end
 
     def omniauth 
