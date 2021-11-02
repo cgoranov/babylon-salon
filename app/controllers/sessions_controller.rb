@@ -4,6 +4,9 @@ class SessionsController < ApplicationController
     end
 
     def create
+        user = find_by(email: params[:user][:email])
+
+
     end
 
     def omniauth 

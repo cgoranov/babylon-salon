@@ -7,13 +7,14 @@ class User < ApplicationRecord
     validates :password, length: { within: 6..27 }, on: :create
     validate :password_uppercase?, on: :create
     validate :special_character, on: :create
+    before_save :downcase
     has_secure_password  #.authenticate, .password=, validates
 
     def self.from_omni_auth(omni_response) #the block only gets activated on create
         self.find_or_create_by(uid: omni_response['uid'], provider: omni_response['provider']) do |u|
-          u.first_name = omni_response['info']['first_name']
-          u.last_name = omni_response['info']['last_name']
-          u.email = omni_response['info']['email']
+          u.first_name = omni_response['info']['first_name'].downcase
+          u.last_name = omni_response['info']['last_name'].downcase
+          u.email = omni_response['info']['email'].downcase
           u.password = SecureRandom.hex(12) + "C!" # still need this information, despite google handling login, random sequence that even we do not know for security
         end 
     end
@@ -24,6 +25,12 @@ class User < ApplicationRecord
 
     def password_uppercase?
       errors.add(:password, 'must contain at least 1 uppercase ') if !!self.password =~ (/\p{Upper}/)
+    end
+
+    def downcase
+      self.first_name = self.first_name.downcase
+      self.last_name = self.last_name.downcase
+      self.email = self.email.downcase
     end
 
     def special_character
