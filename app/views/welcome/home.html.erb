@@ -1,7 +1,8 @@
 <h1>Babylon Salon</h1>
 
 <% if !logged_in? %>
-    Join our community of Gents today.
+    <%= content_tag(:p, 'Join our community of Gents today.') %>
     <%= link_to "Sign up and make an apppointment now", signup_path %>
-    Already have an account? <%= link_to "Login", login_path %>
+    <%= content_tag(:p, 'Already have an account?')%>
+    <%= link_to "Login", login_path %>
 <% end %>

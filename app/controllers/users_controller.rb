@@ -9,9 +9,9 @@ class UsersController < ApplicationController
         
         if @user.save
             session[:user_id] = @user.id
-            redirect_to user_path(@user), notice: "welcome #{@user.first_name.upcase}"
+            redirect_to user_path(@user), notice: "welcome #{@user.first_name.capitalize}"
         else
-            render :new
+            redirect_to :new
         end
     end
 
