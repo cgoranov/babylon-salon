@@ -28,7 +28,6 @@ class User < ApplicationRecord
     end
 
     def email_format
-      byebug
       self.errors.add(:email, 'must be valid') unless self.email =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i 
     end
 

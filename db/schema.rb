@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2021_11_03_015808) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "chair"
+    t.integer "duration_minutes"
   end
 
   create_table "users", force: :cascade do |t|

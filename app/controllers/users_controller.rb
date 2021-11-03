@@ -23,7 +23,7 @@ class UsersController < ApplicationController
         
         if !!@user.uid
            redirect_to user_path(@user), notice: "Google account, cannot update here" 
-        elsif valid_user?
+        elsif not_valid_user?
             redirect_to user_path(current_user), notice: "Not your account, cannot edit"
         end 
     end
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find_by_id(params[:id])
-        redirect_to user_path(current_user), notice: "Not your profile!" if valid_user?
+        redirect_to user_path(current_user), notice: "Not your profile!" if not_valid_user?
     end
 
     private
@@ -52,8 +52,5 @@ class UsersController < ApplicationController
         params.require(:user).permit(:first_name, :last_name, :email, :password, :avatar)
     end
 
-    def valid_user?
-        current_user != @user
-    end
 
 end

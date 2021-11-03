@@ -14,7 +14,7 @@
 
   <body>
 
-    <%= render 'layouts/navigation' %>
+    <%= render partial: 'layouts/navigation', locals: {object: @user} %>
 
     <%= render 'layouts/msgs' %>
 

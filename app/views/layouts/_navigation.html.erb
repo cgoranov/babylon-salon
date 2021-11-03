@@ -1,8 +1,8 @@
 <div class="sidenav">
   <% if logged_in? %>
-    <%= link_to "Profile", user_path(current_user) %>
+    <%= link_to "Profile", user_path(object) %>
     <%= link_to "Your Crew" %>
-    <%= link_to "Appointments" %>
+    <%= link_to "Appointments", user_appointments_path(object) %>
     <%= button_to "Logout", logout_path %>
   <% else %>
     <%= link_to "Home", root_path %>
