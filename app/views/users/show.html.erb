@@ -1,5 +1,10 @@
 <%= content_tag(:p, "Your Profile") %>
-<%= image_tag(@user.avatar, size: "50x50") if @user.avatar.attached? %>
+<% if @user.img %>
+    <%= image_tag(@user.img, size: "50x50") %>
+<% else %>
+    <%= image_tag(@user.avatar, size: "50x50") %>
+<% end %>
+
 <%= content_tag(:p, @user.full_name) %>
 <%= content_tag(:p, @user.email) %>
 

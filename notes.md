@@ -28,6 +28,7 @@ Appointment
 
     :start_time
     :duration
+    :notes_for_barber
     :user_id
     :barber_id
 
@@ -61,4 +62,14 @@ Services_Appointment
 
 
 
+form_for :appoitment
+
+appointment select 
+
+barber
+
+submit 
+
+
+Appointment barber, user, time 
 

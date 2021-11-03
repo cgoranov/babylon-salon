@@ -19,7 +19,7 @@ class User < ApplicationRecord
           u.last_name = omni_response['info']['last_name'].downcase
           u.email = omni_response['info']['email'].downcase
           u.password = SecureRandom.hex(12) + "C!" # still need this information, despite google handling login, random sequence that even we do not know for security
-          # u.avatar.attach(omni_response['info']['image'])
+          u.img = omni_response['info']['image']
         end 
     end
 
