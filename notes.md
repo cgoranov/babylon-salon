@@ -18,19 +18,19 @@ Barber
     has_many :user_favorites, through: :favorite_barbers
 
     :first_name
-    :last_name
+    :chair
 
 Appointment
     belongs_to :user
     belongs_to :barber
-    belongs_to :calendar
     has_many :services, through: :services_appointments
 
-    :start_time
-    :duration
-    :notes_for_barber
-    :user_id
-    :barber_id
+    start_time: time
+    end_time: time
+    date: time
+    notes_for_barber: string
+    user_id
+    barber_id
 
 Calendar
 
