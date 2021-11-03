@@ -26,7 +26,8 @@ gem 'omniauth' #give us access to omniauth (ability to login through a third par
 gem 'omniauth-google-oauth2' #specific to provider (Google in this example). unique to third party
 gem 'omniauth-rails_csrf_protection' #Cross Site Request Forgery protection with Omniauth
 gem 'dotenv-rails' 
-
+gem 'open-uri'
+gem 'uri'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

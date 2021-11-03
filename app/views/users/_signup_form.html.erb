@@ -3,6 +3,8 @@
 <div class="signup">
     
     <%= form_for(:user, url: signup_path) do |f| %>
+        <%= f.label :profile_picture %>
+        <%= f.file_field :avatar %><br>
         <%= f.label :first_name %>
         <%= f.text_field :first_name %><br>
         <%= f.label :last_name %>

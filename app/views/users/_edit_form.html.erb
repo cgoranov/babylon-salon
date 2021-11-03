@@ -1,6 +1,8 @@
 <%= render partial: 'layouts/errors', locals: { object: @user }  %>
 
 <%= form_for object do |f| %>
+    <%= f.label :profile_picture %>
+    <%= f.file_field :avatar %><br>
     <%= f.label :first_name %>
     <%= f.text_field :first_name %><br>
     <%= f.label :last_name %>

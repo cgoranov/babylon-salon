@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
     before_action :redirect_if_not_logged_in, only: [:show]
     before_action :redirect_if_logged_in, only: [:new]
+    
 
     def new
         @user = User.new
@@ -48,7 +49,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:first_name, :last_name, :email, :password)
+        params.require(:user).permit(:first_name, :last_name, :email, :password, :avatar)
     end
 
     def valid_user?

@@ -22,12 +22,17 @@ Barber
 Appointment
     belongs_to :user
     belongs_to :barber
+    belongs_to :calendar
     has_many :services, through: :services_appointments
 
     :start_time
     :duration
     :user_id
     :barber_id
+
+Calendar
+    has_many :appointments
+
 
 Favorite_Barber
     belongs_to :user
