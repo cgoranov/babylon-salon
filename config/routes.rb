@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :barbers
+  
   root 'welcome#home'
 
   get '/signup', to: 'users#new'
@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   get '/auth/google_oauth2/callback', to: 'sessions#omniauth'
 
+  resources :barbers
   resources :users do 
     resources :appointments
   end
