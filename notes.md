@@ -15,6 +15,7 @@ User
 Barber
     has_many :appointments
     has_many :users, through: :appointments
+    has_many :user_favorites, through: :favorite_barbers
 
     :first_name
     :last_name
@@ -31,7 +32,6 @@ Appointment
     :barber_id
 
 Calendar
-    has_many :appointments
 
 
 Favorite_Barber
@@ -52,7 +52,7 @@ Service
     Haircut and Beard $25
     hair dye $25
 
-Services_Appointments
+Services_Appointment
     belongs_to :service
     belongs_to :appointment
 

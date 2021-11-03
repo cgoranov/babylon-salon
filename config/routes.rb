@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :barbers
   root 'welcome#home'
 
   get '/signup', to: 'users#new'
