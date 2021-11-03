@@ -7,6 +7,7 @@ class AppointmentsController < ApplicationController
     def new
         @user = params[:user_id]
         @barbers = Barber.all
+        @appointment = Appointment.new
     end
 
 end

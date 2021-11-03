@@ -1,0 +1,6 @@
+<%= form_for :appointment, url: user_appointments_path(@user) do |f| %>
+    <%= f.label 'Select Barber' %>
+    <%= f.collection_select :barber_id, Barber.all, :id, :first_name %><br>
+    
+    <%= f.submit "Set Appointment" %><br>
+<% end %>
