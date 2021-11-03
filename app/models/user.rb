@@ -2,8 +2,8 @@ class User < ApplicationRecord
     validates :first_name, presence: true
     validates :last_name, presence: true
     validates :email, presence: true
-    validates :email, uniqueness: true, on: :create
-    validate :email_format, on: :create
+    validates :email, uniqueness: true, on: [:create, :update]
+    validate :email_format, on: [:create, :update]
     validates :password, length: { within: 6..27 }, on: :create
     validate :password_uppercase?, on: :create
     validate :special_character, on: :create
@@ -28,7 +28,8 @@ class User < ApplicationRecord
     end
 
     def email_format
-      self.errors.add(:email, 'must be valid') if !!self.email =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i 
+      byebug
+      self.errors.add(:email, 'must be valid') unless self.email =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i 
     end
 
     def password_uppercase?
