@@ -1,19 +1,22 @@
 class Appointment < ApplicationRecord
+    before_save :set_full_date
 
     def set_full_date
-        full_date = Time.parse(self.date)
-        full_date += am_pm?(self.time_slot).hour
+        byebug
+        self.full_date = DateTime.parse(self.date)
+        self.full_date = self.full_date.beginning_of_day
+        self.full_date += am_pm?(self.time_slot).hour
 
-        if full_date < Time.now
-            full_date.change(year: Time.now.year +1)
+        if self.full_date < DateTime.now
+            self.full_date.change(year: DateTime.now.year + 1)
         end
     end
 
     def start_time
-       if full_date.strftime("%p") = "PM"
+       if full_date.strftime("%p") == "PM"
             full_date.hour - 12
        else
-           full_date.hour
+            full_date.hour
        end
     end
 

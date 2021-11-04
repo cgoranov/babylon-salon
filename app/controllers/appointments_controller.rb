@@ -14,7 +14,7 @@ class AppointmentsController < ApplicationController
         
         @appointment = Appointment.new(appointment_params)
         @appointment.user_id = params[:user_id]
-
+        @appointment.save
         byebug
         
     end
