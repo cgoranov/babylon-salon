@@ -41,9 +41,8 @@ ActiveRecord::Schema.define(version: 2021_11_03_222323) do
   end
 
   create_table "appointments", force: :cascade do |t|
-    t.time "start_time"
-    t.time "end_time"
-    t.time "date"
+    t.string "date"
+    t.string "time_slot"
     t.string "notes_for_barber"
     t.integer "user_id"
     t.integer "barber_id"

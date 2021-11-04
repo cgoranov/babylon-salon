@@ -5,7 +5,6 @@ module AppointmentHelper
     end
 
     def date_slots(days_out)
-
         @dates_slots = [Time.now.strftime('%A - %B %d')]
         i = 1
         days_out.times do 
@@ -14,5 +13,7 @@ module AppointmentHelper
         end
         @dates_slots
     end
+
+
 
 end
