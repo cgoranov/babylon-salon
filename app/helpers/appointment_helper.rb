@@ -6,12 +6,13 @@ module AppointmentHelper
 
     def date_slots(days_out)
 
-        @dates_slots = [Time.now.strftime("%A - %B %d")]
+        @dates_slots = [Time.now.strftime('%A - %B %d')]
         i = 1
         days_out.times do 
-           @dates_slots << (Time.now + i.day).strftime("%A - %B %d")
+           @dates_slots << (Time.now + i.day).strftime('%A - %B %d')
            i += 1
         end
         @dates_slots
     end
+
 end

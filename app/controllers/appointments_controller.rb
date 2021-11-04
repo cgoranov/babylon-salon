@@ -10,4 +10,15 @@ class AppointmentsController < ApplicationController
         @appointment = Appointment.new
     end
 
+    def create
+        byebug
+        @appointment = Appointment.new()
+    end
+
+    private
+
+    def appointment_params
+        params.require(:appointment).permit(:barber_id, :user_id, :start_time, :end_time, :notes_for_barber, :date)
+    end
+
 end
