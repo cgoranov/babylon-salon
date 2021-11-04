@@ -16,10 +16,6 @@ class AppointmentsController < ApplicationController
         @appointment.user_id = params[:user_id]
 
         byebug
-
-        
-        
-      
         
     end
 

@@ -1,8 +1,20 @@
 class Appointment < ApplicationRecord
 
+    def set_full_date
+        full_date = Time.parse(self.date)
+        full_date += am_pm?(self.time_slot).hour
+
+        if full_date < Time.now
+            full_date.change(year: Time.now.year +1)
+        end
+    end
+
     def start_time
-        start_time = Time.parse(self.date)
-        start_time += am_pm?(self.time_slot).hour
+       if full_date.strftime("%p") = "PM"
+            full_date.hour - 12
+       else
+           full_date.hour
+       end
     end
 
     def end_time
