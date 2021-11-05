@@ -1,7 +1,6 @@
 class Appointment < ApplicationRecord
     belongs_to :user
     belongs_to :barber
-    validates :barber_id, presence: true
     validate :appointment_taken?
     
 
@@ -40,7 +39,8 @@ class Appointment < ApplicationRecord
     end
 
     def appointment_taken?
-        Appointment.all.any? do |appt|
+        @barber = self.barber
+        @barber.appointments.any? do |appt|
             self.errors.add(:appointment, "already taken") if appt.full_date == self.full_date
         end
     end
