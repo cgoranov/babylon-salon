@@ -38,6 +38,20 @@ class AppointmentsController < ApplicationController
         @appointment = Appointment.find_by_id(params[:id])
     end
 
+    def update
+        @user = User.find_by_id(params[:user_id])
+        @appointment = Appointment.find_by_id(params[:id])
+
+        @appointment.set_full_date(appointment_params(:date, :time_slot)) if !appointment_params(:date, :time_slot).values.include?("")
+        @appointment.update(appointment_params(:barber_id, :notes_for_barber))
+        
+        if @appointment.valid?
+            redirect_to user_appointment_path(@user, @appointment)
+        else
+            render :edit
+        end
+    end
+
     private
 
     def appointment_params(*args)

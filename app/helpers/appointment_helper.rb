@@ -14,6 +14,4 @@ module AppointmentHelper
         @dates_slots
     end
 
-
-
 end

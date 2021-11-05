@@ -3,10 +3,10 @@
 <%= form_for @appointment, url: user_appointment_path(@user, @appointment) do |f| %>
     <%= f.label 'Barber: ' %>
     <%= f.collection_select :barber_id, Barber.all, :id, :first_name, prompt: "select barber" %><br>
-    <%= f.label 'Time Slot: ' %>
-    <%= select_tag "appointment[time_slot]", options_from_collection_for_select(time_slots, :itself, :itself), prompt: "select time slot" %><br>
-    <%= f.label 'Date: ' %>
-    <%= select_tag "appointment[date]", options_from_collection_for_select(date_slots(60), :itself, :itself), prompt: "select appointment date" %><br>
+    <%= f.label 'New Time Slot: ' %>
+    <%= select_tag "appointment[time_slot]", options_from_collection_for_select(time_slots, :itself, :itself), prompt: "#{@appointment.full_date.strftime("%l:%M %p")} - #{@appointment.end_time.strftime("%l:%M %p")}" %><br>
+    <%= f.label 'New Date: ' %>
+    <%= select_tag "appointment[date]", options_from_collection_for_select(date_slots(60), :itself, :itself), prompt: "#{@appointment.full_date.strftime('%A - %B %d')}" %><br>
     <%= f.label 'Notes for Barber: ' %><br>
     <%= f.text_area :notes_for_barber %><br>
     <%= f.submit "Update Appointment" %><br>

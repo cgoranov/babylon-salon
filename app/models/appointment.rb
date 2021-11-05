@@ -1,7 +1,7 @@
 class Appointment < ApplicationRecord
     belongs_to :user
     belongs_to :barber
-    validate :appointment_taken?
+    validate :appointment_taken?, on: :create
     
 
     def set_full_date(params_hash)
