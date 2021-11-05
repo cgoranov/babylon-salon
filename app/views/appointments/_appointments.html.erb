@@ -9,7 +9,7 @@
             <p> with: </p>
             <%= appt.barber.first_name.capitalize %><br>
             <%= link_to "Edit Appointment", edit_user_appointment_path(@user, appt)%><br>
-            <%= link_to "Delete Appointment", user_appointment_path(@user, appt), method: 'delete' %>
+            <%= link_to "Delete Appointment", user_appointment_path(@user, appt), method: 'delete', data: { confirm: "Are you sure you want to delete?" } %>
         </div>
     <% end %>
 <% end %>

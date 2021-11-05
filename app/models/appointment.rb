@@ -3,6 +3,7 @@ class Appointment < ApplicationRecord
     belongs_to :barber
     validate :appointment_taken?, on: :create
     scope :newest, -> { order(:full_date) }
+    scope :barber_select, -> (barber_id) { where('barber_id == ?', barber_id)} 
     
 
     def set_full_date(params_hash)

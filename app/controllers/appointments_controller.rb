@@ -1,9 +1,13 @@
 class AppointmentsController < ApplicationController
   
-    def index
+    def index      
         @appointments = Appointment.newest
         @user = User.find_by_id(params[:user_id])
         @user_appointments = @appointments.map { |a| a if a.user_id == @user.id && a.full_date > DateTime.now } 
+        if params[:appointment] && !params[:appointment][:barber].empty?
+            @appointments = Appointment.barber_select(params[:appointment][:barber])
+            @user_appointments = @appointments.map { |a| a if a.user_id == @user.id && a.full_date > DateTime.now } 
+        end
     end
 
     def show
