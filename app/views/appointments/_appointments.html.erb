@@ -5,7 +5,7 @@
             <p>Your appointment details: </p>
             <%= appt.full_date.strftime("%I:%M %p") + " - " + appt.end_time.strftime("%I:%M %p") %>
             <p>on:</p>
-            <%= appt.full_date.strftime("%A %B %d") %>
+            <%= appt.full_date.strftime("%A %B %d, %Y") %>
             <p> with: </p>
             <%= appt.barber.first_name.capitalize %><br>
             <%= link_to "Edit Appointment", edit_user_appointment_path(@user, appt)%><br>

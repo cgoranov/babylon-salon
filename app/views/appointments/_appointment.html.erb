@@ -2,7 +2,7 @@
     <p>Your appointment details: </p>
     <%= @appointment.full_date.strftime("%I:%M %p") + " - " + @appointment.end_time.strftime("%I:%M %p") %>
     <p>on:</p>
-    <%= @appointment.full_date.strftime("%A %B %d") %>
+    <%= @appointment.full_date.strftime("%A %B %d, %Y") %>
     <p> with: </p>
     <%= @appointment.barber.first_name.capitalize %>
     <%= link_to "Edit Appointment", edit_user_appointment_path(@user, @appointment)%>

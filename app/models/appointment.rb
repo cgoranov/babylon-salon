@@ -6,11 +6,11 @@ class Appointment < ApplicationRecord
     
 
     def set_full_date(params_hash)
-        self.full_date = DateTime.parse(params_hash[:date])
+        self.full_date = Time.zone.parse(params_hash[:date])
         self.full_date = self.full_date.beginning_of_day
         self.full_date += am_pm?(params_hash[:time_slot]).hour
-    
-        if self.full_date < DateTime.now
+
+        if self.full_date < Time.now
             self.full_date += 1.year
         end
     end
