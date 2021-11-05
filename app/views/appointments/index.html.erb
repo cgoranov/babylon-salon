@@ -10,8 +10,9 @@
             <p>on:</p>
             <%= appt.full_date.strftime("%A %B %d") %>
             <p> with: </p>
-            <%= appt.barber.first_name.capitalize %>
-            <%= link_to "Edit Appointment", edit_user_appointment_path(@user, appt)%>
+            <%= appt.barber.first_name.capitalize %><br>
+            <%= link_to "Edit Appointment", edit_user_appointment_path(@user, appt)%><br>
+            <%= link_to "Delete Appointment", user_appointment_path(@user, appt), method: 'delete' %>
         </div>
     <% end %>
 <% end %>
