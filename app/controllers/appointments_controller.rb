@@ -33,6 +33,11 @@ class AppointmentsController < ApplicationController
         end
     end
 
+    def edit
+        @user = User.find_by_id(params[:user_id])
+        @appointment = Appointment.find_by_id(params[:id])
+    end
+
     private
 
     def appointment_params(*args)

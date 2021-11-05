@@ -1,6 +1,6 @@
 <%= render partial: 'layouts/errors', locals: { object: @appointment }  %>
 
-<%= form_for @appointment, url: user_appointments_path(@user) do |f| %>
+<%= form_for @appointment, url: user_appointment_path(@user, @appointment) do |f| %>
     <%= f.label 'Barber: ' %>
     <%= f.collection_select :barber_id, Barber.all, :id, :first_name, prompt: "select barber" %><br>
     <%= f.label 'Time Slot: ' %>
@@ -9,5 +9,5 @@
     <%= select_tag "appointment[date]", options_from_collection_for_select(date_slots(60), :itself, :itself), prompt: "select appointment date" %><br>
     <%= f.label 'Notes for Barber: ' %><br>
     <%= f.text_area :notes_for_barber %><br>
-    <%= f.submit "Set Appointment" %><br>
+    <%= f.submit "Update Appointment" %><br>
 <% end %>

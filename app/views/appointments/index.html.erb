@@ -1,8 +1,6 @@
-Your Appointments
-
 <%= link_to "Make an appointment", new_user_appointment_path(@user) %>
 
-<p> Upcoming appointments: </p>
+<h3> Upcoming appointments: </h3>
 
 <% @user.appointments.each do |appt| %>
     <% if appt.full_date > Time.now %>
@@ -13,6 +11,7 @@ Your Appointments
             <%= appt.full_date.strftime("%A %B %d") %>
             <p> with: </p>
             <%= appt.barber.first_name.capitalize %>
+            <%= link_to "Edit Appointment", edit_user_appointment_path(@user, appt)%>
         </div>
     <% end %>
 <% end %>
