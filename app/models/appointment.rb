@@ -1,14 +1,16 @@
 class Appointment < ApplicationRecord
-    before_save :set_full_date
+    belongs_to :user
+    belongs_to :barber
+    validates :barber_id, presence: true 
+    # validates :full_date, presence: {message: "must select date and time slot"}
 
-    def set_full_date
-        byebug
-        self.full_date = DateTime.parse(self.date)
+    def set_full_date(date, time_slot)
+        self.full_date = DateTime.parse(date)
         self.full_date = self.full_date.beginning_of_day
-        self.full_date += am_pm?(self.time_slot).hour
-
+        self.full_date += am_pm?(time_slot).hour
+    
         if self.full_date < DateTime.now
-            self.full_date.change(year: DateTime.now.year + 1)
+            self.full_date += 1.year
         end
     end
 
@@ -16,12 +18,13 @@ class Appointment < ApplicationRecord
        if full_date.strftime("%p") == "PM"
             full_date.hour - 12
        else
-            full_date.hour
+            full_date
        end
     end
 
     def end_time
-        end_time = start_time + 1.hour
+        end_time = start_time + barber.cut_duration_seconds
+        end_time
     end
 
     def am_pm?(time_slot)

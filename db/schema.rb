@@ -41,9 +41,7 @@ ActiveRecord::Schema.define(version: 2021_11_03_222323) do
   end
 
   create_table "appointments", force: :cascade do |t|
-    t.string "date"
     t.datetime "full_date"
-    t.string "time_slot"
     t.string "notes_for_barber"
     t.integer "user_id"
     t.integer "barber_id"
@@ -53,10 +51,11 @@ ActiveRecord::Schema.define(version: 2021_11_03_222323) do
 
   create_table "barbers", force: :cascade do |t|
     t.string "first_name"
+    t.string "last_name"
+    t.integer "chair"
+    t.integer "cut_duration_seconds"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "chair"
-    t.integer "duration_minutes"
   end
 
   create_table "users", force: :cascade do |t|
