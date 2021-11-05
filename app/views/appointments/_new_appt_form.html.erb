@@ -1,3 +1,5 @@
+<%= render partial: 'layouts/errors', locals: { object: @appointment }  %>
+
 <%= form_for :appointment, url: user_appointments_path(@user) do |f| %>
     <%= f.label 'Barber: ' %>
     <%= f.collection_select :barber_id, Barber.all, :id, :first_name, prompt: "select barber" %><br>

@@ -1,13 +1,14 @@
 class Appointment < ApplicationRecord
     belongs_to :user
     belongs_to :barber
-    validates :barber_id, presence: true 
-    # validates :full_date, presence: {message: "must select date and time slot"}
+    validates :barber_id, presence: true
+    validate :appointment_taken?
+    
 
-    def set_full_date(date, time_slot)
-        self.full_date = DateTime.parse(date)
+    def set_full_date(params_hash)
+        self.full_date = DateTime.parse(params_hash[:date])
         self.full_date = self.full_date.beginning_of_day
-        self.full_date += am_pm?(time_slot).hour
+        self.full_date += am_pm?(params_hash[:time_slot]).hour
     
         if self.full_date < DateTime.now
             self.full_date += 1.year
@@ -35,6 +36,12 @@ class Appointment < ApplicationRecord
             start_time
         else
             start_time += 12 
+        end
+    end
+
+    def appointment_taken?
+        Appointment.all.any? do |appt|
+            self.errors.add(:appointment, "already taken") if appt.full_date == self.full_date
         end
     end
 
