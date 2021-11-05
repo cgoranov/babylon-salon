@@ -1,3 +1,18 @@
 Your Appointments
 
 <%= link_to "Make an appointment", new_user_appointment_path(@user) %>
+
+<p> Upcoming appointments: </p>
+
+<% @user.appointments.each do |appt| %>
+    <% if appt.full_date > Time.now %>
+        <div class="appointment_detail">
+            <p>Your appointment details: </p>
+            <%= appt.full_date.strftime("%I:%M %p") + " - " + appt.end_time.strftime("%I:%M %p") %>
+            <p>on:</p>
+            <%= appt.full_date.strftime("%A %B %d") %>
+            <p> with: </p>
+            <%= appt.barber.first_name.capitalize %>
+        </div>
+    <% end %>
+<% end %>

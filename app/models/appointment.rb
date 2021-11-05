@@ -14,17 +14,8 @@ class Appointment < ApplicationRecord
         end
     end
 
-    def start_time
-       if full_date.strftime("%p") == "PM"
-            full_date.hour - 12
-       else
-            full_date
-       end
-    end
-
     def end_time
-        end_time = start_time + barber.cut_duration_seconds
-        end_time
+        end_time = full_date + barber.cut_duration_seconds.seconds
     end
 
     def am_pm?(time_slot)
