@@ -1,11 +1,11 @@
 <%= render partial: 'layouts/errors', locals: { object: @appointment }  %>
 
-<%= form_for @appointment, url: user_appointment_path(@user, @appointment) do |f| %>
+<%= form_for [@user, @appointment] do |f| %>
     <%= f.label 'Barber: ' %>
     <%= f.collection_select :barber_id, Barber.all, :id, :first_name, prompt: "select barber" %><br>
-    <%= f.label 'New Time Slot: ' %>
+    <%= f.label 'Select Time Slot: ' %>
     <%= select_tag "appointment[time_slot]", options_from_collection_for_select(edit_time_slots, :itself, :itself)%><br>
-    <%= f.label 'New Date: ' %>
+    <%= f.label 'Select Date: ' %>
     <%= select_tag "appointment[date]", options_from_collection_for_select(edit_date_slots(60), :itself, :itself) %><br>
     <%= f.label 'Notes for Barber: ' %><br>
     <%= f.text_area :notes_for_barber %><br>

@@ -42,7 +42,7 @@ class AppointmentsController < ApplicationController
         @user = User.find_by_id(params[:user_id])
         @appointment = Appointment.find_by_id(params[:id])
 
-        @appointment.set_full_date(appointment_params(:date, :time_slot)) if !appointment_params(:date, :time_slot).values.include?("")
+        @appointment.set_full_date(appointment_params(:date, :time_slot)) 
         @appointment.update(appointment_params(:barber_id, :notes_for_barber))
         
         if @appointment.valid?

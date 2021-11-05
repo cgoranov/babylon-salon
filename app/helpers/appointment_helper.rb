@@ -5,7 +5,7 @@ module AppointmentHelper
     end
 
     def edit_time_slots
-        time_slots.unshift "(current time slot) #{@appointment.full_date.strftime("%l:%M %p")} - #{@appointment.end_time.strftime("%l:%M %p")}"
+        time_slots.unshift "#{@appointment.full_date.strftime("%l:%M %p")} - #{@appointment.end_time.strftime("%l:%M %p")}"
     end
 
     def date_slots(days_out)
@@ -20,7 +20,7 @@ module AppointmentHelper
 
     def edit_date_slots(days_out)
         edit_date_slots = date_slots(days_out)
-        edit_date_slots.unshift "(current date) #{@appointment.full_date.strftime('%A - %B %d')}"
+        edit_date_slots.unshift "#{@appointment.full_date.strftime('%A - %B %d')}"
     end
 
 end
