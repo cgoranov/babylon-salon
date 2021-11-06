@@ -3,21 +3,22 @@
     <%= render partial: 'layouts/errors', locals: { object: @user }  %>
     
     <%= form_for(:user, url: signup_path) do |f| %>
-        <%= f.label :profile_picture %>
+        <%= f.label :profile_picture %><br>
         <%= f.file_field :avatar %><br>
-        <%= f.label :first_name %>
+        <%= f.label :first_name %><br>
         <%= f.text_field :first_name %><br>
-        <%= f.label :last_name %>
+        <%= f.label :last_name %><br>
         <%= f.text_field :last_name %><br>
-        <%= f.label :email %>
+        <%= f.label :email %><br>
         <%= f.text_field :email %><br>
-        <%= f.label :password %>
+        <%= f.label :password %><br>
         <%= f.password_field :password %><br>
         <%= f.submit 'Create Account' %><br>
     <% end %>
 
-    ------- or ---------
+    <p class="or"> or </p>
 
-    <%= button_to 'Sign in with Google', '/auth/google_oauth2' %>
-
+    <div class="google_login">
+        <%= link_to("Sign in with  ", '/auth/google_oauth2', method: 'POST') %><%= content_tag(:i, " ", class: "fab fa-google") %>
+    </div>
 </div>
