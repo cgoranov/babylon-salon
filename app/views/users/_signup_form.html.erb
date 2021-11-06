@@ -1,4 +1,6 @@
 <div class="signup">
+
+    <%= render partial: 'layouts/errors', locals: { object: @user }  %>
     
     <%= form_for(:user, url: signup_path) do |f| %>
         <%= f.label :profile_picture %>

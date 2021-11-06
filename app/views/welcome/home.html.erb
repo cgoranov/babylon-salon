@@ -1,8 +1,12 @@
-<h1>Babylon Salon</h1>
+<%= image_tag('home_page_pic.png', class: 'home_page_pic')%>
 
-<% if !logged_in? %>
-    <%= content_tag(:p, 'Join our community of Gents today.') %>
-    <%= link_to "Sign up and make an apppointment now", signup_path %>
-    <%= content_tag(:p, 'Already have an account?')%>
-    <%= link_to "Login", login_path %>
-<% end %>
+<div class="home_page_services">
+    <%= content_tag(:p, "Our Services", class: "services_title") %>
+    <%= content_tag(:p, "Sign up and make an appointment!", class: "home_signup") %>
+    <div class="services">
+        <%= content_tag(:figure, image_tag('hair_cut_icon.png', class: 'services_icon') + content_tag(:figcaption, " Haircut $15"), class: "services_list") %>
+        <%= content_tag(:figure, image_tag('shave_icon.png', class: 'services_icon') + content_tag(:figcaption, " Beard $15"), class: "services_list") %>
+        <%= content_tag(:figure, image_tag('hair_shave_icon.png', class: 'services_iconhb') + content_tag(:figcaption, "Haircut and Beard $25"), class: "services_list") %>
+        <%= content_tag(:figure, image_tag('hair_color_icon.png', class: 'services_iconhc') + content_tag(:figcaption, " Hair Coloring $25"), class: "services_list") %>
+    </div>
+</div>
