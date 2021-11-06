@@ -1,9 +1,9 @@
 class AppointmentsController < ApplicationController
   
-    def index      
+    def index    
         @appointments = Appointment.newest
         @user = User.find_by_id(params[:user_id])
-        @user_appointments = @appointments.map { |a| a if a.user_id == @user.id && a.full_date > DateTime.now } 
+        find_user_appointments
         if params[:appointment] && !params[:appointment][:barber].empty?
             @appointments = Appointment.barber_select(params[:appointment][:barber])
             @user_appointments = @appointments.map { |a| a if a.user_id == @user.id && a.full_date > DateTime.now } 
@@ -68,6 +68,14 @@ class AppointmentsController < ApplicationController
 
     def appointment_params(*args)
         params.require(:appointment).permit(*args)
+    end
+
+    def find_user_appointments
+        if !@user.appointments.empty?
+            @user_appointments = @appointments.map { |a| a if a.user_id == @user.id && a.full_date > DateTime.now }
+        else
+            @user_appointments = @user.appointments
+        end
     end
 
 end
