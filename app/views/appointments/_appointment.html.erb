@@ -5,6 +5,8 @@
     <%= @appointment.full_date.strftime("%A %B %d, %Y") %>
     <p> with: </p>
     <%= @appointment.barber.first_name.capitalize %>
+    <p> notes for Barber: </p>
+    <%= @appointment.notes_for_barber %>
     <%= link_to "Edit Appointment", edit_user_appointment_path(@user, @appointment)%>
     <%= link_to "Delete Appointment", user_appointment_path(@user, @appointment), method: 'delete', data: { confirm: "Are you sure you want to delete?" } %>
 </div>

@@ -1,14 +1,14 @@
 <div class="sidenav">
-  <% if logged_in? %>
-    <%= link_to "Profile", user_path(object) %>
-    <%= link_to "Your Crew" %>
-    <%= link_to "Appointments", user_appointments_path(object) %>
-    <%= button_to "Logout", logout_path %>
-  <% else %>
-    <%= link_to "Home", root_path %>
-    <%= link_to "The Cuts" %>
-    <%= link_to "The Crew", barbers_path %>
-    <%= link_to "Login" %>
-    <%= link_to "Sign up" %>
-  <% end %>
+<ul>
+    <% if logged_in? %>
+      <li><%= content_tag(:i, "", class: "fa fa-home")%><%= link_to "Profile", user_path(object) %></li>
+      <li><%= link_to "Appointments", user_appointments_path(object) %></li>
+      <li><%= button_to "Logout", logout_path %></li>
+    <% else %>
+      <li><%= link_to(content_tag(:i, "", class: "fa fa-home") + " Home", root_path) %></li>
+      <li><%= link_to "About Us" %></li>
+      <li><%= link_to "Login" %></li>
+      <li><%= link_to "Sign up" %></li>
+    <% end %>
+  </ul>
 </div>
