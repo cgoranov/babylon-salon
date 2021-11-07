@@ -8,8 +8,7 @@ class Appointment < ApplicationRecord
 
     def set_full_date(params_hash) 
         self.full_date = Time.zone.parse(params_hash[:date])
-        self.full_date = self.full_date.change(hour: 9)
-        self.full_date += am_pm?(params_hash[:time_slot]).hour
+        self.full_date = self.full_date.change(hour: am_pm?(params_hash[:time_slot]))
         if self.full_date < Time.now
             self.full_date += 1.year
         end
@@ -30,22 +29,12 @@ class Appointment < ApplicationRecord
 
     def am_pm?(time_slot)
         start_time = time_slot.to_i
-        delta = start_time - 9
         array = time_slot.split("-")
         if array[0].include?("am") || start_time == 12
-            delta
+            start_time
         else
-            delta += 12
+            start_time += 12 
         end
-
-        # daylight savings adjustment
-        # start_time = time_slot.to_i
-        # array = time_slot.split("-")
-        # if array[0].include?("am") || start_time == 12
-        #     start_time
-        # else
-        #     start_time += 12 
-        # end
     end
 
     def appointment_taken?
