@@ -7,4 +7,8 @@ filter by Barber:
 
 <h3> Upcoming appointments: </h3>
 
-<%= render 'appointments'%>
+<% if !@user_appointments.empty? %>
+    <%= render 'appointments' %>
+<% else %>
+    No upcoming appointments
+<% end %>

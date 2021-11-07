@@ -1,6 +1,7 @@
 <%= render partial: 'layouts/errors', locals: { object: @appointment }  %>
 
 <%= form_for @appointment, url: user_appointments_path(@user) do |f| %>
+    <%= f.hidden_field :user_id, value: @user.id %>
     <%= f.label 'Barber: ' %>
     <%= f.collection_select :barber_id, Barber.all, :id, :first_name, prompt: "select barber" %><br>
     <%= f.label 'Time Slot: ' %>
