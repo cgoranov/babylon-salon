@@ -324,7 +324,17 @@ p.make_appt {
     margin: 15px;
 }
 
+/* Barbers Index page */
 
+div.barbers_index {
+    height: auto;
+    width: 1105px;
+    border-style: solid;
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+    font-size: 35px;
+    margin: 15px;
 
+}
 
 

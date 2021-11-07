@@ -1,5 +1,9 @@
-<%= content_tag(:h1, 'The Crew') %>
+<%= image_tag('the_team.png', class: 'home_page_pic')%>
 
-<% @barbers.each do |b| %>
-<%= content_tag(:p, b.first_name) %>
-<% end %>
+<div class="barbers_index">
+    <%= content_tag(:h1, 'The Crew') %>
+
+    <% @barbers.each do |b| %>
+        <%= content_tag(:p, b.first_name) %>
+    <% end %>
+</div>
