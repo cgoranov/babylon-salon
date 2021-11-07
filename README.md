@@ -1,24 +1,57 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Overview
 
-Things you may want to cover:
+Babylon Salon is an online appointment booking application for the local business Babylon Salon Barberhop. 
 
-* Ruby version
+## Back End Framework
 
-* System dependencies
+Babylon was built on Ruby on Rails Framework.
 
-* Configuration
+## Installation
 
-* Database creation
+Clone the repo.
 
-* Database initialization
+```bash
+$ git clone git@github.com:cgoranov/babylon-salon.git
+```
 
-* How to run the test suite
+Install all gems.
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+$ bundle install
+```
 
-* Deployment instructions
+Run migrations.
 
-* ...
+```bash
+$ rails db:migrate
+```
+
+Run seed data.
+
+```bash
+$ rails db:seed
+```
+
+Launch on your computer to localhost:3000
+
+```bash
+$ rails s
+```
+
+IMPORTANT NOTE:
+
+Please review Google OmniAuth documentation https://medium.com/@jenn.leigh.hansen/google-oauth2-for-rails-ba1bcfd1b863 by Jen Hansen on initial steps required before using application. 
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
+
