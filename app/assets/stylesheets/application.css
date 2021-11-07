@@ -293,6 +293,8 @@ div.appointment_detail {
     border-width: 1px;
     border-radius: 8px;
     padding: 30px; 
+    font-family: 'Pacifico', cursive;
+   
 }
 
 div.appointment_detail a {
@@ -305,5 +307,18 @@ div.appointment_detail i {
     padding-left: 150px;
     padding-top: 50px;
 }
+
+div.appt_show {
+    width: 600px;
+}
+
+p.make_appt {
+    font-family: 'Pacifico', cursive;
+    font-size: 35px;
+    margin: 15px;
+}
+
+
+
 
 

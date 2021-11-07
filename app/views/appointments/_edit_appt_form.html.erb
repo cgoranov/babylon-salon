@@ -1,5 +1,6 @@
 <%= render partial: 'layouts/errors', locals: { object: @appointment }  %>
 
+<div class="signup_form">
 <%= form_for [@user, @appointment] do |f| %>
     <%= f.label 'Barber: ' %>
     <%= f.collection_select :barber_id, Barber.all, :id, :first_name, prompt: "select barber" %><br>
@@ -11,3 +12,4 @@
     <%= f.text_area :notes_for_barber %><br>
     <%= f.submit "Update Appointment" %><br>
 <% end %>
+</div>

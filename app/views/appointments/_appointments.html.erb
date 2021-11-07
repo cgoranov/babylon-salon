@@ -13,5 +13,6 @@
             <%= link_to content_tag(:i, " ", class: "fas fa-pen"), edit_user_appointment_path(@user, appt)%>
             <%= link_to content_tag(:i, " ", class: "fas fa-trash-alt"), user_appointment_path(@user, appt), method: 'delete', data: { confirm: "Are you sure you want to delete?" } %>
         </div>
+        <br>
     <% end %>
 <% end %>

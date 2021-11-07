@@ -1,14 +1,16 @@
 <%= render partial: 'layouts/errors', locals: { object: @appointment }  %>
 
+<div class="signup_form">
 <%= form_for @appointment, url: user_appointments_path(@user) do |f| %>
     <%= f.hidden_field :user_id, value: @user.id %>
     <%= f.label 'Barber: ' %>
-    <%= f.collection_select :barber_id, Barber.all, :id, :first_name, prompt: "select barber" %>
+    <%= f.collection_select :barber_id, Barber.all, :id, :first_name, prompt: "select barber" %><br>
     <%= f.label 'Time Slot: ' %>
-    <%= select_tag "appointment[time_slot]", options_from_collection_for_select(time_slots, :itself, :itself), prompt: "select time slot" %>
+    <%= select_tag "appointment[time_slot]", options_from_collection_for_select(time_slots, :itself, :itself), prompt: "select time slot" %><br>
     <%= f.label 'Date: ' %>
-    <%= select_tag "appointment[date]", options_from_collection_for_select(date_slots(60), :itself, :itself), prompt: "select appointment date" %>
+    <%= select_tag "appointment[date]", options_from_collection_for_select(date_slots(60), :itself, :itself), prompt: "select appointment date" %><br>
     <%= f.label 'Notes for Barber: ' %>
     <%= f.text_area :notes_for_barber %>
     <%= f.submit "Set Appointment" %>
 <% end %>
+</div>
