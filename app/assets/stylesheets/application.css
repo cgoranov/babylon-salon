@@ -14,7 +14,7 @@
  *= require_self
  */
 
- body{margin:5px; width: auto;}
+ body{margin:5px; width: auto; height: auto;}
 
 /* nav  */
 
@@ -61,6 +61,7 @@
 .main {
     margin-left: 250px; /* Same as the width of the sidenav */
     font-size: 28px; /* Increased text to enable scrolling */
+    height: auto;
   }
 
 div.home_page_services {
@@ -106,18 +107,19 @@ img.services_iconhb {
 /* Sign up page */
 
 div.signup_form {
-    height: 800px;
+    height: auto;
     width: 600px;
     margin-left: 20px;
     text-align: left;
     font-family: 'Pacifico', cursive;
     padding: 20px;
-    border-style: solid;
+    border-style: solid
 }
 
 p.signup {
     text-align: center;
     margin-top: 5px;
+    font-size: 50px;
 }
 
 form input {
@@ -182,4 +184,13 @@ div.google_login a {
     padding-left: 18em; 
     padding-right: 18em;   
     margin: -1em;
+}
+
+#error_explanation {
+    font-size: 15px;
+    color: red;
+}
+
+div.field_with_errors input {
+    border-color: red;
 }

@@ -3,12 +3,12 @@
 <%= form_for @appointment, url: user_appointments_path(@user) do |f| %>
     <%= f.hidden_field :user_id, value: @user.id %>
     <%= f.label 'Barber: ' %>
-    <%= f.collection_select :barber_id, Barber.all, :id, :first_name, prompt: "select barber" %><br>
+    <%= f.collection_select :barber_id, Barber.all, :id, :first_name, prompt: "select barber" %>
     <%= f.label 'Time Slot: ' %>
-    <%= select_tag "appointment[time_slot]", options_from_collection_for_select(time_slots, :itself, :itself), prompt: "select time slot" %><br>
+    <%= select_tag "appointment[time_slot]", options_from_collection_for_select(time_slots, :itself, :itself), prompt: "select time slot" %>
     <%= f.label 'Date: ' %>
-    <%= select_tag "appointment[date]", options_from_collection_for_select(date_slots(60), :itself, :itself), prompt: "select appointment date" %><br>
-    <%= f.label 'Notes for Barber: ' %><br>
-    <%= f.text_area :notes_for_barber %><br>
-    <%= f.submit "Set Appointment" %><br>
+    <%= select_tag "appointment[date]", options_from_collection_for_select(date_slots(60), :itself, :itself), prompt: "select appointment date" %>
+    <%= f.label 'Notes for Barber: ' %>
+    <%= f.text_area :notes_for_barber %>
+    <%= f.submit "Set Appointment" %>
 <% end %>
