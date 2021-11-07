@@ -18,7 +18,7 @@
 
  div.flash_msgs {
     font-family: 'Pacifico', cursive;
-    font-size: 50px;
+    font-size: 30px;
  }
 
   p.confirm {
@@ -328,13 +328,15 @@ p.make_appt {
 
 div.barbers_index {
     height: auto;
-    width: 1105px;
+    width: 1081px;
     border-style: solid;
     text-align: center;
     font-family: 'Pacifico', cursive;
     font-size: 35px;
-    margin: 15px;
+}
 
+img.home_page_pic {
+    width: 1081;
 }
 
 

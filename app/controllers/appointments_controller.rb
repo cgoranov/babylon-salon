@@ -24,6 +24,7 @@ class AppointmentsController < ApplicationController
         else
             @appointment = Appointment.new(appointment_params(:barber_id, :notes_for_barber, :user_id))
             @appointment.set_full_date(appointment_params(:date, :time_slot))
+            # byebug
             if @appointment.save
                 redirect_to user_appointment_path(@user, @appointment)
             else
