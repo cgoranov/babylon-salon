@@ -2,7 +2,7 @@
 
 ## Overview
 
-Babylon Salon is an online appointment booking application for the local business Babylon Salon Barberhop. 
+Babylon Salon is an online appointment booking application for the local business Babylon Salon Barbershop. 
 
 ## Back End Framework
 
