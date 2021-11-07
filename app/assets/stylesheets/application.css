@@ -16,6 +16,11 @@
 
  body{margin:5px; width: auto; height: auto;}
 
+ div.flash_msgs {
+    font-family: 'Pacifico', cursive;
+    font-size: 50px;
+ }
+
 /* nav  */
 
  .sidenav {
@@ -193,4 +198,66 @@ div.google_login a {
 
 div.field_with_errors input {
     border-color: red;
+}
+
+/* Profile page */
+
+div.user_profile {
+    border: solid;
+    border-color: black;
+    height: auto;
+    width: 600px;
+    text-align: center;
+    border-radius: 25px;
+}
+
+p.your_profile {
+    padding-top: 10px;
+    font-family: 'Pacifico', cursive;
+    font-size: 40px;
+}
+
+div.user_profile img {
+    border-radius: 50%;
+    height: 100px;
+    width: auto;
+    margin-left: 20px;
+    border: solid;
+}
+
+p.profile_detail {
+    font-family: 'Pacifico', cursive;
+    font-size: 40px;
+}
+
+div.user_profile a {
+    text-decoration: none;
+    color: black;
+}
+
+div.user_profile i {
+        margin-bottom: 20px;
+}
+
+/* Edit Profile page */
+
+div.edit_profile {
+    height: auto;
+    width: 600px;
+    margin-left: 20px;
+    text-align: left;
+    font-family: 'Pacifico', cursive;
+    padding: 20px;
+    border-style: solid
+
+}
+
+div.login_form {
+    height: auto;
+    width: 600px;
+    margin-left: 20px;
+    text-align: left;
+    font-family: 'Pacifico', cursive;
+    padding: 20px;
+    border-style: solid
 }

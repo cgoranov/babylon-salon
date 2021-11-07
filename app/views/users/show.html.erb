@@ -1,11 +1,14 @@
-<%= content_tag(:p, "Your Profile") %>
-<% if @user.img %>
-    <%= image_tag(@user.img, size: "50x50") %>
-<% else %>
-    <%= image_tag(@user.avatar, size: "50x50") %>
-<% end %>
 
-<%= content_tag(:p, @user.full_name) %>
-<%= content_tag(:p, @user.email) %>
+<div class="user_profile">
+    <%= content_tag(:p, "Your Profile", class: "your_profile") %>
+    <% if @user.img %>
+        <%= image_tag(@user.img, size: "50x50") %>
+    <% else %>
+        <%= image_tag(@user.avatar, size: "50x50") %>
+    <% end %>
 
-<%= link_to "Edit Profile", edit_user_path(@user) unless !!@user.uid %>
+    <%= content_tag(:p, @user.full_name, class: "profile_detail") %>
+    <%= content_tag(:p, @user.email, class: "profile_detail") %>
+
+    <%= link_to content_tag(:i, " ", class: "fas fa-pen"), edit_user_path(@user) unless !!@user.uid %>
+</div>
