@@ -12,7 +12,6 @@ class Appointment < ApplicationRecord
         if self.full_date < Time.now
             self.full_date += 1.year
         end
-
         # old code, had to adjust for daylights savings time
 
         # self.full_date = Time.zone.parse(params_hash[:date]) 
