@@ -1,14 +1,18 @@
-<p><%= link_to "Make an appointment", new_user_appointment_path(@user) %></p>
-filter by Barber: 
-<%= form_tag user_appointments_path, method: 'get' do %>
-    <%= collection_select :appointment, :barber, Barber.all, :id, :first_name, prompt: "select barber" %>
-    <%= submit_tag "filter" %>
-<% end %>
+<div class="appointments_index">
+        <p><%= link_to "Make an appointment", new_user_appointment_path(@user) %></p>
+        filter by Barber: 
+        <%= form_tag user_appointments_path, method: 'get' do %>
+            <%= collection_select :appointment, :barber, Barber.all, :id, :first_name, prompt: "select barber" %>
+            <%= submit_tag "filter" %>
+        <% end %>
 
-<h3> Upcoming appointments: </h3>
+        <h3> Upcoming appointments: </h3>
 
-<% if !@user_appointments.empty? %>
-    <%= render 'appointments' %>
-<% else %>
-    No upcoming appointments
-<% end %>
+
+    <% if !@user_appointments.empty? %>
+        <%= render 'appointments' %>
+    <% else %>
+        No upcoming appointments
+    <% end %>
+
+</div>

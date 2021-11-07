@@ -236,7 +236,7 @@ div.user_profile a {
 }
 
 div.user_profile i {
-        margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 /* Edit Profile page */
@@ -261,3 +261,49 @@ div.login_form {
     padding: 20px;
     border-style: solid
 }
+
+/* Appointment Index page */
+
+div.appointments_index {
+    height: auto;
+    width: 600px;
+    margin-left: 20px;
+    text-align: left;
+    font-family: 'Pacifico', cursive;
+    padding: 20px;
+    border-style: solid
+}
+
+div.appointments_index a {
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    padding: 20px;
+    border-radius: 8px;
+    font-size: 20px;
+}
+
+div.appointments_index a:hover {
+    opacity: 0.5;
+}
+
+div.appointment_detail {
+    font-size: 15px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 8px;
+    padding: 30px; 
+}
+
+div.appointment_detail a {
+  background-color: unset;
+}
+
+div.appointment_detail i {
+    color: black;
+    float: center;
+    padding-left: 150px;
+    padding-top: 50px;
+}
+
+
