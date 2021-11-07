@@ -1,8 +1,9 @@
 class AppointmentsController < ApplicationController
-    before_action :find_user
+    before_action :find_user_appt
     before_action :find_appointment, only: [:show, :edit, :update, :destroy]
+    before_action :not_valid_user?, only: [:show, :edit, :index, :new]
   
-    def index    
+    def index  
         @appointments = Appointment.newest
         find_user_appointments
         appointments_filtered_by_barber
@@ -56,6 +57,19 @@ class AppointmentsController < ApplicationController
         params.require(:appointment).permit(*args)
     end
 
+    def find_user_appt
+        @user = User.find_by_id(params[:user_id])
+    end
+
+    def find_appointment
+        @appointment = Appointment.find_by_id(params[:id])
+        if !!@appointment
+            @appointment
+        else
+            redirect_to user_appointments_path(current_user), notice: "No appointment found"
+        end
+    end
+
     def find_user_appointments
         @user_appointments = @appointments.select { |a| a if a.user_id == @user.id && a.full_date > DateTime.now }
     end
@@ -66,13 +80,5 @@ class AppointmentsController < ApplicationController
             @user_appointments = @appointments.select { |a| a if a.user_id == @user.id && a.full_date > DateTime.now } 
         end
     end
-
-    def find_user
-        @user = User.find_by_id(params[:user_id])
-    end
-
-    def find_appointment
-        @appointment = Appointment.find_by_id(params[:id])
-    end
-
+    
 end

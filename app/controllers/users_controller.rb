@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
-    before_action :redirect_if_not_logged_in, only: [:show]
+    before_action :find_user, only: [:edit, :show, :update]
     before_action :redirect_if_logged_in, only: [:new]
+    before_action :not_valid_user?, only: [:show, :edit]
     
-
     def new
         @user = User.new
     end
@@ -19,18 +19,12 @@ class UsersController < ApplicationController
     end
 
     def edit
-        @user = User.find_by_id(params[:id])
-        
         if !!@user.uid
            redirect_to user_path(@user), notice: "Google account, cannot update here" 
-        elsif not_valid_user?
-            redirect_to user_path(current_user), notice: "Not your account, cannot edit"
         end 
     end
 
     def update
-        @user = User.find_by_id(params[:id])
-
         @user.update(user_params)
 
         if @user.valid?
@@ -42,8 +36,6 @@ class UsersController < ApplicationController
     end
 
     def show
-        @user = User.find_by_id(params[:id])
-        redirect_to user_path(current_user), notice: "Not your profile!" if not_valid_user?
     end
 
     private
@@ -52,5 +44,8 @@ class UsersController < ApplicationController
         params.require(:user).permit(:first_name, :last_name, :email, :password, :avatar)
     end
 
-
+    def find_user
+        @user = User.find_by_id(params[:id])
+    end
+    
 end
