@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   
   resources :users do 
     resources :appointments
+    resources :barbers, only: [:index]
   end
 
 

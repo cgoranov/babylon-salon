@@ -3,7 +3,13 @@
 <div class="barbers_index">
     <%= content_tag(:h1, 'The Crew') %>
 
-    <% @barbers.each do |b| %>
+<%if !logged_in? %>
+    <% Barber.all.each do |b| %>
         <%= content_tag(:p, b.first_name) %>
     <% end %>
+<% else %>
+    <% @user_barbers.uniq.each do |b| %>
+        <%= content_tag(:p, b.first_name) %>
+    <% end %>
+<% end %>
 </div>

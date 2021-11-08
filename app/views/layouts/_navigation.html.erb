@@ -2,6 +2,7 @@
 <ul>
     <% if logged_in? %>
       <li><%= link_to(content_tag(:i, "", class: "far fa-user") + "  Profile", user_path(object))%></li>
+            <li><%= link_to "Barber used", user_barbers_path(object) %></li>
       <li><%= link_to(content_tag(:i, "", class: "far fa-hand-scissors") + "   Appointments", user_appointments_path(object)) %></li>
       <li><%= link_to(content_tag(:i, "", class: "fas fa-user-minus") + "   Logout", logout_path, method: 'post') %></li>
     <% else %>

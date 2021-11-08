@@ -10,9 +10,10 @@ class User < ApplicationRecord
     validate :default_profile_picture, on: :create
     before_save :downcase
     before_update :downcase
-    has_secure_password  #.authenticate, .password=, validates
+    has_secure_password 
     has_one_attached :avatar
-    has_many :appointments #dependent: :destroy if user got option to delete account
+    has_many :appointments 
+    has_many :barbers, through: :appointments
 
     def self.from_omni_auth(omni_response) #the block only gets activated on create
         self.find_or_create_by(uid: omni_response['uid'], provider: omni_response['provider']) do |u|
