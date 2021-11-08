@@ -2,7 +2,8 @@ class BarbersController < ApplicationController
     before_action :find_user_barb
 
     def index
-        @user_barbers = @user.appointments.collect { |a| a.barber } 
+        @user_barbers = @user.barbers.uniq
+        # byebug
         flash[:message] = "no previous barbers" if @user_barbers.empty?
     end
 

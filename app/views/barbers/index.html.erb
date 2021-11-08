@@ -8,7 +8,7 @@
         <%= content_tag(:p, b.first_name) %>
     <% end %>
 <% else %>
-    <% @user_barbers.uniq.each do |b| %>
+    <% @user_barbers.each do |b| %>
         <%= content_tag(:p, b.first_name) %>
     <% end %>
 <% end %>
