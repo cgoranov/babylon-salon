@@ -5,7 +5,7 @@ class Barber < ApplicationRecord
 
     def self.top_barber
         top_barbers = Barber.most_appointments.sort_by { |k, v| -v }
-        top_performer = Barber.find_by_id(top_barbers[0][0])
+        top_performer = Barber.find_by_id(top_barbers[0][0]).first_name
         top_performer
     end
 
